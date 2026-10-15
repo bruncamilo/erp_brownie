@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brownie-erp"
+version = "0.1.0"
+description = "Sistema desktop de gestão para confeitaria: insumos, fichas técnicas, compras, produção, vendas e resultado."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6-Essentials>=6.6",
+    "SQLAlchemy>=2.0",
+    "alembic>=1.13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6"]
+
+[project.scripts]
+brownie-erp = "brownie_erp.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+brownie_erp = ["migrations/*.py", "migrations/versions/*.py", "migrations/script.py.mako"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
